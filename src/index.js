@@ -8,6 +8,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+
 DB_Connection()
    .then(() => {
       console.log(" data base ho gya ");
@@ -16,5 +17,5 @@ DB_Connection()
       });
    })
    .catch((err) => {
-      console.log(err);
+      console.log(err , "data base connect bhinhi huys");
    });

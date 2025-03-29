@@ -3,6 +3,8 @@ import express from "express";
 import cors from "cors";
 
 import cookieParser from "cookie-parser";
+import { configDotenv } from "dotenv";
+configDotenv();
 
 const app = express();
 
@@ -13,13 +15,13 @@ app.use(
    })
 );
 
-app.use(express.json({ limit: "50kb" }));
-
-app.use(express.urlencoded({ extended: true, limit: "50kb" }));
-
+app.use(express.json({ limit: "5mb" }));
+app.use(express.urlencoded({ extended: true, limit: "5mb" }));
 app.use(express.static("public"));
+app.use(cookieParser());
 
-app.use(cookieParser())
+import userRouter from "./routes/user.routes.js";
 
+app.use("/api/v1/users", userRouter);
 
 export { app };
